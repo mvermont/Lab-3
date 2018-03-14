@@ -30,9 +30,26 @@ public class HandPoker extends Hand {
 		Frequency();
 
 		if (isRoyalFlush()) {
+			//eHandStrength.RoyalFlush;
 
 		} else if (isStraightFlush()) {
 
+		} else if (isFourOfAKind()) {
+			
+		} else if (isFullHouse()) {
+			
+		} else if (isFlush()) {
+			
+		} else if (isStraight()) {
+			
+		} else if (isThreeOfAKind()) {
+			
+		} else if (isTwoPair()) {
+			
+		} else if (isPair()) {
+			
+		} else { //isHighCard()
+			
 		}
 
 		return null;
@@ -41,24 +58,57 @@ public class HandPoker extends Hand {
 	public boolean isRoyalFlush() {
 		boolean bIsRoyalFlush = false;
 		// TODO : Implement this method
+		
+		//if(isStraight() && isFlush() &&  == eRank.ACE) {
+			
+		//}
 		return bIsRoyalFlush;
 	}
 
 	public boolean isStraightFlush() {
 		boolean bisStraightFlush = false;
 		// TODO : Implement this method
+		
+		if(isStraight() && isFlush()) {
+			bisStraightFlush= true;
+		}
 		return bisStraightFlush;
 	}
 	
 	// TODO : Implement this method
 	public boolean isFourOfAKind() {
 		boolean bisFourOfAKind = false;
+		
+		int FourOfAKind = 4;
+		int RankCount = 0;
+		
+		for (eRank rank: eRank.values()) {
+			for (Card c: super.getCards()) {
+				if(rank == c.geteRank()) {
+					RankCount++;
+				}
+			}
+			if(RankCount > 1) {
+				break;
+			}
+		}
+		
+		if(RankCount == FourOfAKind) {
+			bisFourOfAKind = true;
+		}
+		else {
+			bisFourOfAKind = false;
+		}
 		return bisFourOfAKind;
 	}
 
 	// TODO : Implement this method
 	public boolean isFullHouse() {
 		boolean bisFullHouse = false;
+		
+		if (isThreeOfAKind() && isPair()) {
+			bisFullHouse = true;
+		}
 		return bisFullHouse;
 
 	}
