@@ -57,17 +57,15 @@ public class HandPoker extends Hand {
 
 	public boolean isRoyalFlush() {
 		boolean bIsRoyalFlush = false;
-		// TODO : Implement this method
 		
-		//if(isStraight() && isFlush() &&  == eRank.ACE) {
-			
-		//}
+		if(isStraightFlush() &&  super.getCards().get(0).geteRank() == eRank.ACE && super.getCards().get(1).geteRank() == eRank.KING) {
+			bIsRoyalFlush = true;	
+		}
 		return bIsRoyalFlush;
 	}
 
 	public boolean isStraightFlush() {
 		boolean bisStraightFlush = false;
-		// TODO : Implement this method
 		
 		if(isStraight() && isFlush()) {
 			bisStraightFlush= true;
@@ -75,7 +73,6 @@ public class HandPoker extends Hand {
 		return bisStraightFlush;
 	}
 	
-	// TODO : Implement this method
 	public boolean isFourOfAKind() {
 		boolean bisFourOfAKind = false;
 		
@@ -102,7 +99,6 @@ public class HandPoker extends Hand {
 		return bisFourOfAKind;
 	}
 
-	// TODO : Implement this method
 	public boolean isFullHouse() {
 		boolean bisFullHouse = false;
 		
@@ -139,7 +135,18 @@ public class HandPoker extends Hand {
 
 	public boolean isStraight() {
 		boolean bisStraight = false;
-		// TODO : Implement this method
+		
+		int a = 0;
+		if(super.getCards().get(0).geteRank() == eRank.ACE && super.getCards().get(0).geteRank() == eRank.FIVE){
+			a = 1;
+		}
+		
+		for(; a < super.getCards().size()-1; a++) {
+			if(super.getCards().get(a).geteRank().getiCardValue() - 1 != super.getCards().get(a+1).geteRank().getiCardValue()) {
+				bisStraight = false;
+				break;
+			}
+		}
 		return bisStraight;
 	}
 
