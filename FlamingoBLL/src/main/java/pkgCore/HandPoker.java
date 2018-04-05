@@ -29,27 +29,96 @@ public class HandPoker extends Hand {
 		Collections.sort(super.getCards());
 		Frequency();
 
+		//ask about this in class
 		if (isRoyalFlush()) {
-			//eHandStrength.RoyalFlush;
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.RoyalFlush);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);			
 
 		} else if (isStraightFlush()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.StraightFlush);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 
 		} else if (isFourOfAKind()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.FourOfAKind);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else if (isFullHouse()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.FullHouse);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else if (isFlush()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.Flush);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else if (isStraight()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.Straight);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else if (isThreeOfAKind()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.ThreeOfAKind);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else if (isTwoPair()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.TwoPair);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else if (isPair()) {
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.Pair);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 			
 		} else { //isHighCard()
-			
+			HandScorePoker HSP = (HandScorePoker) this.getHS();
+			HSP.seteHandStrength(eHandStrength.HighCard);
+			int iGetCard = this.getCRC().get(0).getiCardPosition();
+			HSP.setHiCard(this.getCards().get(iGetCard));
+			HSP.setLoCard(null);
+			HSP.setKickers(FindTheKickers(this.getCRC()));
+			this.setHS(HSP);
 		}
 
 		return null;
@@ -156,13 +225,7 @@ public class HandPoker extends Hand {
 		boolean bisThreeOfAKind = false;
 		if (this.getCRC().size() == 3) {
 			if (this.getCRC().get(0).getiCnt() == Constants.THREE_OF_A_KIND) {
-				HandScorePoker HSP = (HandScorePoker) this.getHS();
-				HSP.seteHandStrength(eHandStrength.ThreeOfAKind);
-				int iGetCard = this.getCRC().get(0).getiCardPosition();
-				HSP.setHiCard(this.getCards().get(iGetCard));
-				HSP.setLoCard(null);
-				HSP.setKickers(FindTheKickers(this.getCRC()));
-				this.setHS(HSP);
+				bisThreeOfAKind = true;
 			}
 		}
 		return bisThreeOfAKind;
