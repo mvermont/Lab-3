@@ -145,7 +145,7 @@ public class HandPoker extends Hand {
 	public boolean isFourOfAKind() {
 		boolean bisFourOfAKind = false;
 		
-		int FourOfAKind = 4;
+		int FourOfAKind = Constants.FOUR_OF_A_KIND;
 		int RankCount = 0;
 		
 		for (eRank rank: eRank.values()) {
@@ -203,10 +203,10 @@ public class HandPoker extends Hand {
 	}
 
 	public boolean isStraight() {
-		boolean bisStraight = false;
+		boolean bisStraight = true;
 		
 		int a = 0;
-		if(super.getCards().get(0).geteRank() == eRank.ACE && super.getCards().get(0).geteRank() == eRank.FIVE){
+		if(super.getCards().get(0).geteRank() == eRank.ACE && super.getCards().get(1).geteRank() == eRank.FIVE){
 			a = 1;
 		}
 		
@@ -233,19 +233,31 @@ public class HandPoker extends Hand {
 
 	public boolean isTwoPair() {
 		boolean bisTwoPair = false;
-		// TODO : Implement this method
+		if (this.getCRC().size() == 3) {
+			if (this.getCRC().get(0).getiCnt() == Constants.TWO_OF_A_KIND && this.getCRC().get(1).getiCnt() == Constants.TWO_OF_A_KIND) {
+				bisTwoPair = true;
+			}
+		}
 		return bisTwoPair;
 	}
 
 	public boolean isPair() {
 		boolean bisPair = false;
-		// TODO : Implement this method
+		if (this.getCRC().size() == 4) {
+			if (this.getCRC().get(0).getiCnt() == Constants.TWO_OF_A_KIND) {
+				bisPair = true;
+			}
+		}
 		return bisPair;
 	}
 
 	public boolean isHighCard() {
 		boolean bisHighCard = false;
-		// TODO : Implement this method
+		if (this.getCRC().size() == 5) {
+			if (this.getCRC().get(0).getiCnt() == Constants.ONE_OF_A_KIND) {
+				bisHighCard = true;
+			}
+		}
 		return bisHighCard;
 	}
 
