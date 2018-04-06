@@ -81,7 +81,7 @@ public class HandPoker extends Hand {
 			int iGetCard = this.getCRC().get(0).getiCardPosition();
 			HSP.setHiCard(this.getCards().get(iGetCard));
 			HSP.setLoCard(null);
-			HSP.setKickers(FindTheKickers(this.getCRC()));
+			HSP.setKickers(null);
 			this.setHS(HSP);
 			
 		} else if (isThreeOfAKind()) {
@@ -136,7 +136,7 @@ public class HandPoker extends Hand {
 	public boolean isStraightFlush() {
 		boolean bisStraightFlush = false;
 		
-		if(isStraight() && isFlush()) {
+		if(isFlush() && isStraight()) {
 			bisStraightFlush= true;
 		}
 		return bisStraightFlush;
@@ -171,8 +171,10 @@ public class HandPoker extends Hand {
 	public boolean isFullHouse() {
 		boolean bisFullHouse = false;
 		
-		if (isThreeOfAKind() && isPair()) {
-			bisFullHouse = true;
+		if (this.getCRC().size() == 2) {
+			if (this.getCRC().get(0).getiCnt() == Constants.THREE_OF_A_KIND && this.getCRC().get(1).getiCnt() == Constants.TWO_OF_A_KIND) {
+				bisFullHouse = true;
+			}
 		}
 		return bisFullHouse;
 
@@ -211,7 +213,7 @@ public class HandPoker extends Hand {
 		}
 		
 		for(; a < super.getCards().size()-1; a++) {
-			if(super.getCards().get(a).geteRank().getiCardValue() - 1 != super.getCards().get(a+1).geteRank().getiCardValue()) {
+			if(super.getCards().get(a).geteRank().getiRankNbr() - 1 != super.getCards().get(a+1).geteRank().getiRankNbr()) {
 				bisStraight = false;
 				break;
 			}
